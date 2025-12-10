@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>WA Rotator</title>
+    <script>
+        function rotate() {
+            const numbers = [
+                "6282294009151",
+                "6287854926871",
+
+            ];
+
+            let index = localStorage.getItem("wa_index");
+            if (index === null) {
+                index = 0;
+            } else {
+                index = (parseInt(index) + 1) % numbers.length;
+            }
+
+            localStorage.setItem("wa_index", index);
+
+            const selected = numbers[index];
+            const message = "Halo%20kak,%20saya%20mau%20tanya%20unitnya.";
+
+            window.location.href = "https://wa.me/" + selected + "?text=" + message;
+        }
+    </script>
+</head>
+
+<body onload="rotate()">
+    Redirecting...
+</body>
+
+</html>
