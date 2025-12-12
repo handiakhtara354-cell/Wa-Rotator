@@ -7,11 +7,11 @@
     <script>
         function rotate() {
             const numbers = [
-                "6282294009151",
-                "6287854926871",
-
+                "6282294009151", // ...51 → Pak Kibi
+                "6287854926871", // ...71 → Pak Dani
             ];
 
+            // ambil index rotator
             let index = localStorage.getItem("wa_index");
             if (index === null) {
                 index = 0;
@@ -22,8 +22,23 @@
             localStorage.setItem("wa_index", index);
 
             const selected = numbers[index];
-            const message = "Halo%20kak,%20saya%20mau%20tanya%20unitnya.";
 
+            // ambil 2 digit belakang nomor
+            const lastTwo = selected.slice(-2);
+
+            // tentukan template berdasarkan nomor
+            let message = "";
+
+            if (lastTwo === "51") {
+                message = "Halo%20Pak%20Kibi,%20saya%20mau%20tanya%20unitnya.";
+            } else if (lastTwo === "71") {
+                message = "Halo%20Pak%20Dani,%20saya%20mau%20tanya%20unitnya.";
+            } else {
+                // default kalau butuh
+                message = "Halo%20kak,%20saya%20mau%20tanya%20unitnya.";
+            }
+
+            // redirect ke WA
             window.location.href = "https://wa.me/" + selected + "?text=" + message;
         }
     </script>
