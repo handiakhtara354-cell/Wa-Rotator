@@ -7,11 +7,11 @@
     <script>
         function rotate() {
             const numbers = [
-                "6282294009151", // belakang 51 → Pak Kibi
-                "6287854926871", // belakang 71 → Pak Dani
+                "6282294009151", // ...51 → Pak Kibi
+                "6287854926871", // ...71 → Pak Dani
             ];
 
-            // ambil index rotasi
+            // rotator index
             let index = localStorage.getItem("wa_index");
             if (index === null) {
                 index = 0;
@@ -24,21 +24,21 @@
             const selected = numbers[index];
             const lastTwo = selected.slice(-2);
 
-            // template chat
+            // TEMPLATE SESUAI FORMAT YANG KAMU MAU
             let message = "";
 
             if (lastTwo === "51") {
-                message = "Halo Pak Kibi, saya mau tanya unitnya. [GA] {LP}";
+                message = "Halo Pak Kibi [GA] {LP}, saya mau tanya unitnya";
             } else if (lastTwo === "71") {
-                message = "Halo Pak Dani, saya mau tanya unitnya. [GA] {LP}";
+                message = "Halo Pak Dani [GA] {LP}, saya mau tanya unitnya";
             } else {
-                message = "Halo kak, saya mau tanya unitnya. [GA] {LP}";
+                message = "Halo kak [GA] {LP}, saya mau tanya unitnya";
             }
 
-            // encode untuk URL
+            // encode
             const encoded = encodeURIComponent(message);
 
-            // redirect
+            // redirect WA
             window.location.href = "https://wa.me/" + selected + "?text=" + encoded;
         }
     </script>
