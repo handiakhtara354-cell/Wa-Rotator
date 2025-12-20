@@ -9,6 +9,7 @@
             const numbers = [
                 "6282294009151", // ...51 → Pak Kibi
                 "6287854926871", // ...71 → Pak Dani
+                "628120147354"   // ...54 → Pak Guntur
             ];
 
             // rotator index
@@ -24,21 +25,21 @@
             const selected = numbers[index];
             const lastTwo = selected.slice(-2);
 
-            // TEMPLATE SESUAI FORMAT YANG KAMU MAU
+            // TEMPLATE PESAN
             let message = "";
 
             if (lastTwo === "51") {
                 message = "Halo Pak Kibi [GA] {LP}, saya mau tanya unitnya";
             } else if (lastTwo === "71") {
                 message = "Halo Pak Dani [GA] {LP}, saya mau tanya unitnya";
+            } else if (lastTwo === "54") {
+                message = "Halo Pak Guntur [GA] {LP}, saya mau tanya unitnya";
             } else {
                 message = "Halo kak [GA] {LP}, saya mau tanya unitnya";
             }
 
-            // encode
+            // encode & redirect
             const encoded = encodeURIComponent(message);
-
-            // redirect WA
             window.location.href = "https://wa.me/" + selected + "?text=" + encoded;
         }
     </script>
